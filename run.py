@@ -1,20 +1,21 @@
-from flask import Flask
-from app.extensions import db
-from flask_migrate import Migrate
 import os
+from dotenv import load_dotenv
+from flask import Flask
+from app.extensions import db, migrate
+from app.routes import bp as test_bp
 
-def create_app():
-    app = Flask(__name__)
-    app.config.from_object('app.config.Config')  # Load config
+# Load environment variables from .env file
+load_dotenv()
 
-    # Initialize the database and migrate
-    db.init_app(app)
-    migrate = Migrate(app, db)  # Initialize Migrate with the app and db
+app = Flask(__name__)
+app.config.from_object('app.config.Config')
 
-    # Register blueprints or routes here (if any)
+# Initialize extensions
+db.init_app(app)
+migrate.init_app(app, db)
 
-    return app
+# Register blueprints for routes
+app.register_blueprint(test_bp)
 
 if __name__ == '__main__':
-    app = create_app()
-    app.run()
+    app.run(debug=True)

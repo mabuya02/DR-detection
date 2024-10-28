@@ -8,6 +8,7 @@ class User(db.Model):
     username = db.Column(db.String(50), unique=True, nullable=False)  # Unique username
     email = db.Column(db.String(100), unique=True, nullable=False)  # Unique email address
     password = db.Column(db.String(255), nullable=False)  # User's hashed password
+    new_column = db.Column(db.String(50))
     created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))  # Timestamp for creation
     updated_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))  # Timestamp for updates
 
