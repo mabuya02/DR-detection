@@ -10,3 +10,15 @@ class Config:
     DB_PASSWORD = os.getenv('DB_PASSWORD')
     DB_HOST = os.getenv('DB_HOST')
     DB_NAME = os.getenv('DB_NAME')
+
+    # Flask-Mail Configuration
+    MAIL_SERVER = os.getenv('MAIL_SERVER')
+    MAIL_PORT = int(os.getenv('MAIL_PORT'))
+    MAIL_USERNAME = os.getenv('MAIL_USERNAME')
+    MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
+    MAIL_USE_TLS = os.getenv('MAIL_USE_TLS').lower() == 'true'
+    MAIL_USE_SSL = os.getenv('MAIL_USE_SSL').lower() == 'true'
+
+    #Logging configuration
+    LOG_FILE_PATH = os.getenv('LOG_FILE_PATH', 'logs/app.log')
+    ERROR_LOG_FILE_PATH = os.getenv('ERROR_LOG_FILE_PATH', 'logs/error.log')

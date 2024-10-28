@@ -11,3 +11,14 @@ def config():
         'DEBUG': current_app.config['DEBUG']
     }
     return jsonify(config_data)
+
+
+@bp.route('/test-logging', methods=['GET'])
+def test_logging():
+    current_app.logger.debug('This is a DEBUG message.')
+    current_app.logger.info('This is an INFO message.')
+    current_app.logger.warning('This is a WARNING message.')
+    current_app.logger.error('This is an ERROR message.')
+    current_app.logger.critical('This is a CRITICAL message.')
+
+    return jsonify({'message': 'Logging messages have been sent!'})
