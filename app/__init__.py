@@ -39,7 +39,7 @@ def create_app():
     )
 
     # Attach handlers to the app's logger
-    app.logger.setLevel(logging.DEBUG)  # Ensure root logger level is DEBUG
+    app.logger.setLevel(logging.DEBUG) 
     app.logger.addHandler(main_handler)
     app.logger.addHandler(error_handler)
 
