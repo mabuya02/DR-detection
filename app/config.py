@@ -19,6 +19,4 @@ class Config:
     MAIL_USE_TLS = os.getenv('MAIL_USE_TLS').lower() == 'true'
     MAIL_USE_SSL = os.getenv('MAIL_USE_SSL').lower() == 'true'
 
-    #Logging configuration
-    LOG_FILE_PATH = os.getenv('LOG_FILE_PATH', 'logs/app.log')
-    ERROR_LOG_FILE_PATH = os.getenv('ERROR_LOG_FILE_PATH', 'logs/error.log')
+    ASSETS_ROOT = os.getenv('ASSETS_ROOT', '/static/assets')

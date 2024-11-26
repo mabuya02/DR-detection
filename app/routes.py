@@ -1,6 +1,13 @@
-from flask import Blueprint, jsonify, current_app
+from flask import Blueprint, jsonify, current_app,render_template
 
 bp = Blueprint('test', __name__)
+
+
+
+
+@bp.route('/')
+def home():
+    return render_template('index.html')
 
 @bp.route('/config')
 def config():
@@ -13,12 +20,7 @@ def config():
     return jsonify(config_data)
 
 
-@bp.route('/test-logging', methods=['GET'])
-def test_logging():
-    current_app.logger.debug('This is a DEBUG message.')
-    current_app.logger.info('This is an INFO message.')
-    current_app.logger.warning('This is a WARNING message.')
-    current_app.logger.error('This is an ERROR message.')
-    current_app.logger.critical('This is a CRITICAL message.')
+@bp.route('/test')
+def test_page():
+    return render_template('index.html')
 
-    return jsonify({'message': 'Logging messages have been sent!'})

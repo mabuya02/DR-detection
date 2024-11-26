@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='assets/img/favicon.png') }}">
+    <title>{% block title %}Preclinic{% endblock %}</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/fontawesome/css/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/fontawesome/css/all.min.css') }}">
+
+    <!-- Feathericon CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/feather.css') }}">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/style.css') }}">
+
+    {% block stylesheets %}{% endblock stylesheets %}
+</head>
+<body>
+<div class="main-wrapper">
+    {% include 'layouts/navbar.html' %}
+    {% include 'includes/sidebar.html' %}
+    <div class="page-wrapper">
+        <div class="content">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ breadcrumb_home_link }}">{{ breadcrumb_home }}</a></li>
+                            <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                            <li class="breadcrumb-item active">{{ breadcrumb_current }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- /Page Header -->
+            {% block content %}{% endblock content %}
+        </div>
+    </div>
+</div>
+{% include 'layouts/scripts.html' %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
+</body>
+</html>
